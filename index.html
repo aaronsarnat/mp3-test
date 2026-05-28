@@ -1,0 +1,27 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+<head>
+    <!-- Structural -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+</head>
+    <body>
+        <h1>Music files</h1>
+        <ul>
+        {% for file in site.static_files %}
+            {% if file.path contains '/files/' %}
+            <li>
+                <a href="{{ file.path }}" target="_blank" rel="noopener">
+                {{ file.name }}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </body>
+</html>
