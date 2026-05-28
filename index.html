@@ -9,19 +9,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index</title>
+    <style>
+        body {
+            margin: 0;
+            background: url(https://cdn.frankerfacez.com/emoticon/381875/2) repeat;
+        }
+
+        table {
+            background: #fff;
+        }
+    </style>
 </head>
     <body>
         <h1>Music files</h1>
-        <ul>
-        {% for file in site.static_files %}
-            {% if file.path contains '/files/' %}
-            <li>
-                <a href=".{{ file.path }}" target="_blank" rel="noopener">
-                {{ file.name }}
-                </a>
-            </li>
-            {% endif %}
-        {% endfor %}
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>Filename</th>
+                    <th>Type</th>
+                    <th>Last Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for file in site.static_files %}
+                    {% if file.path contains '/files/' %}
+                        <tr>
+                            <td><a href=".{{ file.path }}" target="_blank" rel="noopener">{{ file.name }}</a></td>
+                            <td>{{ file.extname }}</td>
+                            <td>{{ file.modified_time }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
     </body>
 </html>
